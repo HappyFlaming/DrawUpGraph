@@ -42,8 +42,8 @@
         //求结束弧度
         endDegres += M_PI*2*((CGFloat)[dataarr[i] floatValue]/_pictureDataSum);
         
-        UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.width/2) radius:MIN(self.frame.size.width/2, self.frame.size.height/2) startAngle:_startDegres endAngle:endDegres clockwise:YES];
-        [path addLineToPoint:CGPointMake(self.frame.size.width/2, self.frame.size.width/2)];
+        UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:MIN(self.frame.size.width/2, self.frame.size.height/2) startAngle:_startDegres endAngle:endDegres clockwise:YES];
+        [path addLineToPoint:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)];
         
 #if 0
         CAShapeLayer *layer = [CAShapeLayer layer];
@@ -60,8 +60,25 @@
         //开始填充
         [path fill];
 #endif
+//        CGPoint point = [self calcCircleCoordinateWithCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) andWithAngle:endDegres-_startDegres andWithRadius:MIN(self.frame.size.width/2, self.frame.size.height/2)];
+//        UILabel *labe = [[UILabel alloc] init];
+//        labe.center = point;
+//        labe.text = dataarr[i];
+//        [labe sizeToFit];
+//        labe.font = [UIFont systemFontOfSize:10];
+//        labe.backgroundColor = [UIColor yellowColor];
+//        [self addSubview:labe];
+        
         //重新设定开始弧度
         _startDegres = endDegres;
     }
+}
+
+- (CGPoint) calcCircleCoordinateWithCenter:(CGPoint)center  andWithAngle:(CGFloat)angle andWithRadius:(CGFloat)radius{
+    CGFloat x2 = -radius*cosf(angle*180/M_PI);
+    CGFloat y2 = -radius*sinf(angle*180/M_PI);
+    return CGPointMake(center.x-x2, center.y+y2);
+    
+    //x=a+(x0-a)cosα-(y0-b)sinα ,y=b+(x0-a)sinα+(y0-b)cosα .
 }
 @end

@@ -19,13 +19,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     
 #pragma mark ----绘制扇形----
-    DrawFanPictureView *view1 = [[DrawFanPictureView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    DrawFanPictureView *view1 = [[DrawFanPictureView alloc] initWithFrame:CGRectMake(100, 50, 100, 100)];
     view1.dataDict = @{@"100":[UIColor redColor],@"50":[UIColor blueColor],@"160":[UIColor orangeColor]};
     [self.view addSubview:view1];
     
-    DrawFanPictureView *view = [[DrawFanPictureView alloc] initWithFrame:CGRectMake(100, 250, 100, 100)];
+    DrawFanPictureView *view = [[DrawFanPictureView alloc] initWithFrame:CGRectMake(100, 200, 100, 100)];
     view.dataDict = @{@"100":[UIColor redColor],@"50":[UIColor blueColor],@"160":[UIColor orangeColor]};
-    view.startDegres = -M_PI*1/2;//调整其实弧度
+    view.startDegres = -M_PI*1/2;//调整起始弧度
     [self.view addSubview:view];
 }
 
