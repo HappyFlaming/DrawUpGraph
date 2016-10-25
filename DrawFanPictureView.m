@@ -54,7 +54,7 @@
         
         [self.layer addSublayer:layer];
 #else
-        UIColor *color = _dataDict[dataarr[i]];
+        UIColor *color = _dataDict[dataarr[i]];        
         //设置填充颜色
         [color setFill];
         //开始填充
